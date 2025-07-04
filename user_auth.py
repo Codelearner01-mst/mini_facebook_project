@@ -29,7 +29,7 @@ import hashlib
 import json
 #import os
 
-DEFAULT_DB="main_db.json"
+DEFAULT_DB="user_db.json"
 
 def reset_database():
     with open("main_db.json", "w") as f:
