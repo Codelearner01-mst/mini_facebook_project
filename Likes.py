@@ -1,7 +1,5 @@
-from User_data import  save_users,load_users
-from datetime import datetime
-from helpers import user_choice , select_post_from_lists, verifying 
-from friends import numbering_func
+from user_auth import  save_users
+
 
 
 class Likes:

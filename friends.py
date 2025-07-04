@@ -2,7 +2,7 @@ import json
 import os
 from datetime import datetime
 import hashlib
-from User_data import  save_users,load_users
+from user_auth import  save_users,load_users
 
 
 # Dictionary to store each user's friends list

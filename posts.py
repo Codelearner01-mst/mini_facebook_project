@@ -1,14 +1,12 @@
 #What we need:
 #The user posts
 #The time the user posted
-import json
 from helpers import get_current_time
-from datetime import datetime 
-from User_data import  save_users,load_users,user_database
+from user_auth import  save_users
 
 
 #Let make a class called post
-def update_user_data(database , user_id , content , timestamp,file_name):
+def update_user_data(database , user_id , content , timestamp):
         
        main_data=database[user_id]
        if "posts" not in main_data:
@@ -24,7 +22,6 @@ class Post:
         self.author_id=author_id
         self.database=database
         self.timestamp = timestamp
- 
         self.filename=file_name
         
      
@@ -39,18 +36,9 @@ class Postmanager(Post):
          timestamp=get_current_time()
          print("Database",self.database)              
          content=input("Add post:") 
-         user_post=update_user_data(self.database , author_id , content, timestamp,file_name)  
-         print(f"Type of database: {type(self.database)}")
-         print(f"keys in database:{list(self.database.keys())}") 
-         
-         if file_name:
-          try:
-              save_users(self.database,file_name)
-          except TypeError as e:
-              print("JSON error:",e)
-
-                  
+         user_post=update_user_data(self.database , author_id , content, timestamp)     
          print("Post added!\n")
+         
          save_users(self.database , file_name) 
          
          return user_post
@@ -77,10 +65,7 @@ class Postmanager(Post):
              author_name=self.database[user_id]["name"]
                               
              print(f"{num}. {author_name} - {post['content']} @ {post['timestamp']} ♥️{len(post['likes'])} 🗨️{len(post['comments'])}")
-             numbered_posts[num]=post
-         
-         
-         
+             numbered_posts[num]=post       
             
            
          return numbered_posts

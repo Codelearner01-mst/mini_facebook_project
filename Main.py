@@ -1,4 +1,4 @@
-from User_data import sign_up_flow, sign_in, display_user_profile,change_name , DEFAULT_DB
+from user_auth import sign_up_flow, sign_in, display_user_profile,change_name , DEFAULT_DB
 from helpers import select_post_from_lists, verifying,get_current_time
 from options import main_options,home_options, friends_options, settings_options
 from Likes import Likes
