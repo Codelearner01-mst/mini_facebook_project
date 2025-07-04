@@ -1,0 +1,50 @@
+{
+    "0535750228": {
+        "name": "Fameye",
+        "dob": "2003-03-11",
+        "gender": "1",
+        "hash_password": "5f3c771c2825dcd9a538f701c96bedde2befc5b6758b06859460ccd7771dec88",
+        "friends": [
+            "0507882002"
+        ],
+        "friend_requests": [],
+        "sent_requests": [],
+        "posts": [
+            {
+                "content": "Hi guys",
+                "timestamp": "09:51:41",
+                "likes": [],
+                "comments": []
+            }
+        ]
+    },
+    "0507882002": {
+        "name": "John",
+        "dob": "2001-06-22",
+        "gender": "1",
+        "hash_password": "68482803aaba8275b96565b25ecabcdc475b21b08b7ff09e018f9e798a5b9bda",
+        "friends": [
+            "0535750228"
+        ],
+        "friend_requests": [],
+        "sent_requests": [
+            "0535750228"
+        ],
+        "posts": [
+            {
+                "content": "Gud morning guys",
+                "timestamp": "10:19:42",
+                "likes": [
+                    "0535750228"
+                ],
+                "comments": [
+                    {
+                        "user": "Paul",
+                        "text": "Hw far bro",
+                        "time": "10:00:39"
+                    }
+                ]
+            }
+        ]
+    }
+}

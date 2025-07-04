@@ -29,12 +29,16 @@ import hashlib
 import json
 #import os
 
-DEFAULT_DB="user_database.json"
-file_name=DEFAULT_DB
+DEFAULT_DB="main_db.json"
+
+def reset_database():
+    with open("main_db.json", "w") as f:
+        json.dump({}, f)
+    print("✅ Database reset successfully!")
 
 #reset_database()
 #Creating JSON to load file
-def load_users(file_name):
+def load_users(file_name=DEFAULT_DB):
     #print(f"Using load_users from: {os.path.abspath(file_name)}")
     try:
         with open(file_name , "r") as f:
@@ -43,7 +47,7 @@ def load_users(file_name):
         return {}
             
 #Creating JSON to save file
-def save_users(database , file_name):
+def save_users(database , file_name=DEFAULT_DB):
         with open(file_name , "w") as f:
             json.dump(database, f , indent=4)        
         
@@ -120,10 +124,11 @@ def user_database(database ,phone , name , dob , gender , password_hash):
     "sent_requests": [],
     "posts": []
                         }
-                
+                    
+    # return database[phone]
   
-   save_users(database , file_name)
-   
+   save_users(database , DEFAULT_DB)
+   print(json.dumps(database, indent=4))
    
              
 #Checking user authentification   
@@ -131,7 +136,7 @@ def  authenticate_user(database , phone , password):
         if phone not in database:
             return False , "Phone number not registered" 
         if database[phone]["hash_password"] != password_hashing(password):
-            return False , "Incorrect password.Try again"
+            return False , "Incorrect password"
    
         return True , f"Welcome back, {database[phone]['name']}! "        
 
@@ -139,23 +144,25 @@ def  authenticate_user(database , phone , password):
 def sign_up_flow():
    while True:
      print("-------Sign up-------")
-     database=load_users(file_name)             
+     database=load_users(DEFAULT_DB)             
      phone=input_phone()
      if user_exist(database , phone):
-          print("Phone number already exist")
-          continue
-         
+             print("Phone number already exist")
+             continue 
      
      name=input_name()
      dob=input_dob()
      gender=input_gender()
      password=input_password()
      password_hash=password_hashing(password)
-
+     
      user_database(database ,phone , name , dob , gender , password_hash)
      print("Account created successfully!") 
+
+     return phone , database 
    
-     return phone , database    
+
+   
 
 #Creating sign in flow
 def sign_in():
@@ -169,9 +176,9 @@ def sign_in():
         success , message=authenticate_user(database , phone , password)
         if success==False:
             print(message)
-            continue
+            continue     
         print(message)
-        
+        print(database)
         return phone , database
  
                        
@@ -188,10 +195,11 @@ def display_user_profile(database , phone ):
 
 def change_name(phone):
     database=load_users(DEFAULT_DB)
-    new_name=input("Enter your new name:")
+    new_name=input_name()
     database[phone]["name"]=new_name
+    save_users(database)
     print("Name updated successfully")
-    save_users(database,file_name)
+
          
 
     
