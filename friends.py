@@ -1,7 +1,6 @@
 import json
 import os
 from datetime import datetime
-import hashlib
 from user_auth import  save_users,load_users
 
 
@@ -172,6 +171,14 @@ def accept_or_decline_request(phone,database, file_name ):
             
       save_users(database , file_name)
     
+
+def display_friends(database,phone):
+    get_friends=database[phone].get("friends",[])
+    if not get_friends:
+        print("You have no friends")
+        return
+    for num,friend in enumerate(get_friends,start=1):
+        print(f"{num} - {friend}")
 
     
  
