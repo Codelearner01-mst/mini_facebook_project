@@ -1,10 +1,10 @@
 from user_auth import sign_up_flow, sign_in, display_user_profile,change_name , DEFAULT_DB
-from helpers import select_post_from_lists, verifying
+from helpers import select_post_from_lists, verifying,get_current_time
 from options import main_options,home_options, friends_options, settings_options
 from Likes import Likes
 from posts import Post , Postmanager
 from comments import Comments, CommentsManager 
-from friends import accept_or_decline_request,send_friend_request, display_friends
+from friends import accept_or_decline_request,send_friend_request
 file_name=DEFAULT_DB
 
 def verify_user_selection(selected_from):
@@ -118,7 +118,7 @@ def friends_interaction(phone,database, file_name):
     if choice=="4":
        return 
     if choice=="1":
-        display_friends(database,phone)
+        break
     elif choice=="2":
         accept_or_decline_request(phone,database, file_name )
     elif choice=="3":
