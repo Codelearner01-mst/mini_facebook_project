@@ -36,10 +36,10 @@ def like_post(phone , database ,numbered_posts):
        likes=Likes(phone , phone , database,file_name)
        selected=verify_user_selection(numbered_posts)
                  
-       likes.add_like(numbered_posts,selected,file_name)
+       likes.add_remove_like(numbered_posts,selected,file_name)
 
-             
-                                       
+        
+        
 def comment_on_post(phone , database, numbered_posts):
      comment_details=Comments(phone, phone , timestamp, database)    
      handle_comment=CommentsManager(comment_details, file_name,database)

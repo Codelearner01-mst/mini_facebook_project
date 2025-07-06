@@ -5,7 +5,7 @@ def friends_options():
     print("\n1.Your friends\n2.Friends requests\n3.Suggested friends\n4.Back")
     
 def home_options():
-    print("\n1.Add post\n2.Like post\n3.Comment post \n4 Go to comment section\n5.Back")
+    print("\n1.Add post\n2.Like post/remove \n3.Comment post \n4 Go to comment section\n5.Back")
    
    
 def settings_options():

@@ -11,6 +11,14 @@
             {
                 "content": "Hi guys",
                 "timestamp": "23:18:50",
+                "likes": [
+                    "0535750228"
+                ],
+                "comments": []
+            },
+            {
+                "content": "Rip Diogo Jota",
+                "timestamp": "20:57:34",
                 "likes": [],
                 "comments": []
             }

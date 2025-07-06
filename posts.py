@@ -27,14 +27,14 @@ class Post:
      
     def display_post(self):
         print(f"{self.timestamp}: {self.author_id}.{self.content}")
+
         
 class Postmanager(Post):
     def __init__(self,content, author_id, database , timestamp,file_name):
           super().__init__(content, author_id , database, timestamp,file_name)
                     
     def add_post(self , content, author_id, timestamp,file_name):
-         timestamp=get_current_time()
-         print("Database",self.database)              
+         timestamp=get_current_time()             
          content=input("Add post:") 
          user_post=update_user_data(self.database , author_id , content, timestamp)     
          print("Post added!\n")
